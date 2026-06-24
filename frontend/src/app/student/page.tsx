@@ -44,6 +44,7 @@ export default function StudentDashboardPage() {
   const { profile, platformData } = data;
   const cf = platformData.codeforces;
   const lc = platformData.leetcode;
+  const cc = platformData.codechef;
 
   return (
     <div className="space-y-8">
@@ -65,6 +66,7 @@ export default function StudentDashboardPage() {
             <div className="flex flex-wrap gap-2 mt-4 justify-center md:justify-start">
               {profile.cfHandle && <Badge variant="primary" className="bg-white/20 hover:bg-white/30 text-white border-none">CF: {profile.cfHandle}</Badge>}
               {profile.lcHandle && <Badge variant="warning" className="bg-white/20 hover:bg-white/30 text-white border-none">LC: {profile.lcHandle}</Badge>}
+              {profile.ccHandle && <Badge variant="success" className="bg-white/20 hover:bg-white/30 text-white border-none">CC: {profile.ccHandle}</Badge>}
             </div>
           </div>
         </div>
@@ -106,6 +108,26 @@ export default function StudentDashboardPage() {
                 <div className="flex justify-between items-center text-sm border-b border-slate-700 pb-2">
                   <span className="text-slate-400">Ranking</span>
                   <span className="font-semibold text-white">{lc.profile?.ranking || '-'}</span>
+                </div>
+              </div>
+            ) : (
+              <p className="text-slate-400 text-sm">Not linked or no data</p>
+            )}
+          </Card>
+
+          <Card className="border-t-4 border-t-success-500 shadow-md hover:shadow-lg transition-all">
+            <div className="mb-4 flex justify-between items-center">
+              <h3 className="text-xl font-bold text-white">CodeChef</h3>
+              {cc && <span className="text-sm font-normal text-slate-400">{cc.stars}</span>}
+            </div>
+            {cc ? (
+              <div className="space-y-4">
+                <div className="flex items-baseline space-x-2">
+                  <span className="text-4xl font-extrabold text-success-400">{cc.rating}</span>
+                  <span className="text-sm text-slate-400">current rating</span>
+                </div>
+                <div className="text-sm text-slate-400">
+                  Max Rating: <span className="font-semibold text-white">{cc.highestRating}</span>
                 </div>
               </div>
             ) : (

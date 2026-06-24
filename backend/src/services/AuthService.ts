@@ -42,6 +42,9 @@ export class AuthService {
         await tx.studentProfile.create({
           data: {
             userId: newUser.id,
+            cfHandle: data.cfHandle || null,
+            lcHandle: data.lcHandle || null,
+            ccHandle: data.ccHandle || null,
           },
         });
       } else if (role === Role.MENTOR) {

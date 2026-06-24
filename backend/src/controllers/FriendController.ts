@@ -6,20 +6,32 @@ import { AppError } from '../middleware/errorHandler.middleware';
 export class FriendController {
   // Send friend request
   static async sendRequest(req: AuthRequest, res: Response) {
-    const { receiverId } = req.body;
+    const { receiverId } = req.body; // receiverId is actually the email from the frontend
     const profile = await prisma.studentProfile.findUnique({ where: { userId: req.user!.userId } });
     if (!profile) throw new AppError('Only students can send friend requests', 403);
     const requesterId = profile.id;
 
-    if (requesterId === receiverId) {
+    // Find the receiver user by email
+    const receiverUser = await prisma.user.findUnique({
+      where: { email: receiverId },
+      include: { studentProfile: true }
+    });
+
+    if (!receiverUser || !receiverUser.studentProfile) {
+      throw new AppError('Student with this email not found', 404);
+    }
+
+    const actualReceiverId = receiverUser.studentProfile.id;
+
+    if (requesterId === actualReceiverId) {
       throw new AppError('Cannot send a friend request to yourself', 400);
     }
 
     const existing = await prisma.friendship.findFirst({
       where: {
         OR: [
-          { requesterId, receiverId },
-          { requesterId: receiverId, receiverId: requesterId }
+          { requesterId, receiverId: actualReceiverId },
+          { requesterId: actualReceiverId, receiverId: requesterId }
         ]
       }
     });
@@ -29,7 +41,7 @@ export class FriendController {
     }
 
     const friendship = await prisma.friendship.create({
-      data: { requesterId, receiverId, status: 'PENDING' }
+      data: { requesterId, receiverId: actualReceiverId, status: 'PENDING' }
     });
 
     res.status(201).json({ success: true, data: friendship });

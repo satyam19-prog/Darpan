@@ -61,7 +61,7 @@ export default function FriendsPage() {
             <form onSubmit={handleAddFriend} className="flex gap-2">
               <input
                 type="text"
-                placeholder="Enter Student ID"
+                placeholder="Enter Friend's Email"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className="flex-1 bg-surface border border-slate-700 rounded-lg px-3 py-2 outline-none focus:border-blue-500"

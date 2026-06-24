@@ -17,4 +17,7 @@ router.get('/dashboard', asyncWrapper(StudentController.getDashboard));
 // Get Upsolving Status
 router.get('/upsolving', asyncWrapper(StudentController.getUpsolvingStatus));
 
+// Update Profile
+router.put('/profile', asyncWrapper(StudentController.updateProfile));
+
 export default router;

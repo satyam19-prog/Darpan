@@ -57,7 +57,6 @@ const navItemsByRole: Record<Role, NavItem[]> = {
     { label: 'Dashboard', href: '/student', icon: <LayoutDashboard className="w-5 h-5" /> },
     { label: 'Profile', href: '/student/profile', icon: <UserCircle className="w-5 h-5" /> },
     { label: 'Friends', href: '/student/friends', icon: <UsersRound className="w-5 h-5" /> },
-    { label: 'Compare', href: '/student/compare', icon: <GitCompare className="w-5 h-5" /> },
   ],
 };
 

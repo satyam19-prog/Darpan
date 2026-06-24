@@ -3,11 +3,13 @@ import { prisma } from '../config/database';
 import { AuthRequest } from '../types';
 import { CodeforcesService } from '../services/CodeforcesService';
 import { LeetCodeService } from '../services/LeetCodeService';
+import { CodeChefService } from '../services/CodeChefService';
 import { BadgeService } from '../services/BadgeService';
 import { AppError } from '../middleware/errorHandler.middleware';
 
 const cfService = new CodeforcesService();
 const lcService = new LeetCodeService();
+const ccService = new CodeChefService();
 const badgeService = new BadgeService();
 
 export class StudentController {
@@ -32,6 +34,7 @@ export class StudentController {
     // Fetch live ratings from CF and LC if handles exist
     let cfData = null;
     let lcData = null;
+    let ccData = null;
 
     try {
       if (studentProfile.cfHandle) {
@@ -55,6 +58,14 @@ export class StudentController {
       console.error('Failed to fetch LC data', e);
     }
 
+    try {
+      if (studentProfile.ccHandle) {
+        ccData = await ccService.getUserProfile(studentProfile.ccHandle);
+      }
+    } catch (e) {
+      console.error('Failed to fetch CC data', e);
+    }
+
     res.status(200).json({
       success: true,
       data: {
@@ -62,6 +73,7 @@ export class StudentController {
         platformData: {
           codeforces: cfData,
           leetcode: lcData,
+          codechef: ccData,
         },
       },
     });
@@ -83,5 +95,22 @@ export class StudentController {
     });
 
     res.status(200).json({ success: true, data: attendances });
+  }
+
+  static async updateProfile(req: AuthRequest, res: Response) {
+    if (!req.user || !req.user.userId) return res.status(401).json({ success: false, message: 'Unauthorized' });
+
+    const { cfHandle, lcHandle, ccHandle } = req.body;
+
+    const updated = await prisma.studentProfile.update({
+      where: { userId: req.user.userId },
+      data: {
+        cfHandle: cfHandle ?? undefined,
+        lcHandle: lcHandle ?? undefined,
+        ccHandle: ccHandle ?? undefined,
+      }
+    });
+
+    res.status(200).json({ success: true, data: updated });
   }
 }
