@@ -1,0 +1,61 @@
+{
+  "name": "darpan-backend",
+  "version": "1.0.0",
+  "description": "Darpan - Competitive Programming Performance Tracker Backend",
+  "main": "dist/server.js",
+  "scripts": {
+    "dev": "nodemon --watch src --ext ts --exec ts-node src/server.ts",
+    "build": "tsc",
+    "start": "node dist/server.js",
+    "prisma:generate": "prisma generate --schema=src/prisma/schema.prisma",
+    "prisma:migrate": "prisma migrate dev --schema=src/prisma/schema.prisma",
+    "prisma:studio": "prisma studio --schema=src/prisma/schema.prisma",
+    "test": "jest"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "helmet": "^7.1.0",
+    "cookie-parser": "^1.4.6",
+    "dotenv": "^16.3.1",
+    "@prisma/client": "^5.7.1",
+    "jsonwebtoken": "^9.0.2",
+    "bcryptjs": "^2.4.3",
+    "zod": "^3.22.4",
+    "winston": "^3.11.0",
+    "winston-daily-rotate-file": "^4.7.1",
+    "bullmq": "^5.1.1",
+    "ioredis": "^5.3.2",
+    "nodemailer": "^6.9.7",
+    "express-rate-limit": "^7.1.4",
+    "rate-limit-redis": "^4.2.0",
+    "axios": "^1.6.2",
+    "cheerio": "^1.0.0-rc.12",
+    "puppeteer": "^21.6.1",
+    "exceljs": "^4.4.0",
+    "multer": "^1.4.5-lts.1",
+    "csv-parse": "^5.5.3"
+  },
+  "devDependencies": {
+    "typescript": "^5.3.3",
+    "@types/node": "^20.10.4",
+    "@types/express": "^4.17.21",
+    "@types/cors": "^2.8.17",
+    "@types/cookie-parser": "^1.4.6",
+    "@types/jsonwebtoken": "^9.0.5",
+    "@types/bcryptjs": "^2.4.6",
+    "@types/nodemailer": "^6.4.14",
+    "@types/multer": "^1.4.11",
+    "ts-node": "^10.9.2",
+    "nodemon": "^3.0.2",
+    "prisma": "^5.7.1",
+    "jest": "^29.7.0",
+    "@types/jest": "^29.5.11",
+    "ts-jest": "^29.1.1",
+    "supertest": "^6.3.3",
+    "@types/supertest": "^2.0.16"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

@@ -1,0 +1,43 @@
+# Darpan CP Tracker - Local Development Services
+# Yeh file PostgreSQL aur Redis ko locally run karne ke liye hai
+# Usage: docker compose up -d
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: darpan-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: darpan_user
+      POSTGRES_PASSWORD: darpan_password_123
+      POSTGRES_DB: darpan_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U darpan_user -d darpan_db"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  redis:
+    image: redis:7-alpine
+    container_name: darpan-redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    command: redis-server --appendonly yes
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  postgres_data:
+    driver: local
+  redis_data:
+    driver: local

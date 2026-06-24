@@ -1,0 +1,318 @@
+// ========================================
+// Darpan CP Tracker - Prisma Schema
+// Yeh file database ke saare models aur relations define karti hai
+// ========================================
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  ADMIN
+  MENTOR
+  STUDENT
+}
+
+enum CampType {
+  SUMMER
+  WINTER
+  CUSTOM
+}
+
+enum Platform {
+  CODEFORCES
+  LEETCODE
+  CODECHEF
+  OTHER
+}
+
+enum FriendshipStatus {
+  PENDING
+  ACCEPTED
+  REJECTED
+}
+
+model User {
+  id           String   @id @default(cuid())
+  name         String
+  email        String   @unique
+  passwordHash String
+  role         Role     @default(STUDENT)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  studentProfile    StudentProfile?
+  mentorProfile     MentorProfile?
+  refreshTokens     RefreshToken[]
+  notifications     Notification[]
+  createdCamps      Camp[]              @relation("CampCreator")
+  addedContests     PrivateContest[]    @relation("ContestAdder")
+  createdSessions   OfflineSession[]    @relation("SessionCreator")
+  markedAttendances OfflineAttendance[] @relation("AttendanceMarker")
+  resolvedFlags     PlagiarismFlag[]    @relation("FlagResolver")
+
+  @@map("users")
+}
+
+model StudentProfile {
+  id        String  @id @default(cuid())
+  userId    String  @unique
+  user      User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  cfHandle  String?
+  lcHandle  String?
+  ccHandle  String?
+  bio       String?
+  avatarUrl String?
+
+  enrollments        CampEnrollment[]
+  contestAttendances ContestAttendance[]
+  offlineAttendances OfflineAttendance[]
+  mentorNotes        MentorNote[]       @relation("StudentNotes")
+  badges             StudentBadge[]
+  sentRequests       Friendship[]       @relation("FriendRequester")
+  receivedRequests   Friendship[]       @relation("FriendReceiver")
+  flagsAsA           PlagiarismFlag[]   @relation("FlagStudentA")
+  flagsAsB           PlagiarismFlag[]   @relation("FlagStudentB")
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("student_profiles")
+}
+
+model MentorProfile {
+  id     String @id @default(cuid())
+  userId String @unique
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  campMentors CampMentor[]
+  notes       MentorNote[] @relation("MentorNotes")
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("mentor_profiles")
+}
+
+model Camp {
+  id          String   @id @default(cuid())
+  name        String
+  type        CampType
+  description String?
+  startDate   DateTime
+  endDate     DateTime
+  createdBy   String
+  creator     User     @relation("CampCreator", fields: [createdBy], references: [id])
+
+  enrollments     CampEnrollment[]
+  mentors         CampMentor[]
+  privateContests PrivateContest[]
+  offlineSessions OfflineSession[]
+  mentorNotes     MentorNote[]
+  plagiarismFlags PlagiarismFlag[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("camps")
+}
+
+model CampEnrollment {
+  id         String         @id @default(cuid())
+  campId     String
+  camp       Camp           @relation(fields: [campId], references: [id], onDelete: Cascade)
+  studentId  String
+  student    StudentProfile @relation(fields: [studentId], references: [id], onDelete: Cascade)
+  enrolledAt DateTime       @default(now())
+
+  @@unique([campId, studentId])
+  @@map("camp_enrollments")
+}
+
+model CampMentor {
+  id       String        @id @default(cuid())
+  campId   String
+  camp     Camp          @relation(fields: [campId], references: [id], onDelete: Cascade)
+  mentorId String
+  mentor   MentorProfile @relation(fields: [mentorId], references: [id], onDelete: Cascade)
+
+  @@unique([campId, mentorId])
+  @@map("camp_mentors")
+}
+
+model PrivateContest {
+  id          String   @id @default(cuid())
+  campId      String
+  camp        Camp     @relation(fields: [campId], references: [id], onDelete: Cascade)
+  name        String
+  platform    Platform
+  contestLink String
+  cfContestId Int?
+  startTime   DateTime
+  endTime     DateTime
+  addedBy     String
+  adder       User     @relation("ContestAdder", fields: [addedBy], references: [id])
+
+  attendances     ContestAttendance[]
+  plagiarismFlags PlagiarismFlag[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("private_contests")
+}
+
+model ContestAttendance {
+  id              String         @id @default(cuid())
+  studentId       String
+  student         StudentProfile @relation(fields: [studentId], references: [id], onDelete: Cascade)
+  contestId       String
+  contest         PrivateContest @relation(fields: [contestId], references: [id], onDelete: Cascade)
+  participated    Boolean        @default(false)
+  isVirtual       Boolean        @default(false)
+  rank            Int?
+  solvedCount     Int            @default(0)
+  penalty         Int            @default(0)
+  upsolved        Boolean        @default(false)
+  upsolveDeadline DateTime?
+
+  @@unique([studentId, contestId])
+  @@map("contest_attendances")
+}
+
+model OfflineSession {
+  id              String   @id @default(cuid())
+  campId          String
+  camp            Camp     @relation(fields: [campId], references: [id], onDelete: Cascade)
+  title           String
+  date            DateTime
+  durationMinutes Int
+  createdBy       String
+  creator         User     @relation("SessionCreator", fields: [createdBy], references: [id])
+
+  attendances OfflineAttendance[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("offline_sessions")
+}
+
+model OfflineAttendance {
+  id        String         @id @default(cuid())
+  sessionId String
+  session   OfflineSession @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+  studentId String
+  student   StudentProfile @relation(fields: [studentId], references: [id], onDelete: Cascade)
+  present   Boolean        @default(false)
+  markedBy  String
+  marker    User           @relation("AttendanceMarker", fields: [markedBy], references: [id])
+
+  @@unique([sessionId, studentId])
+  @@map("offline_attendances")
+}
+
+model MentorNote {
+  id        String         @id @default(cuid())
+  mentorId  String
+  mentor    MentorProfile  @relation("MentorNotes", fields: [mentorId], references: [id], onDelete: Cascade)
+  studentId String
+  student   StudentProfile @relation("StudentNotes", fields: [studentId], references: [id], onDelete: Cascade)
+  campId    String
+  camp      Camp           @relation(fields: [campId], references: [id], onDelete: Cascade)
+  note      String
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("mentor_notes")
+}
+
+model Friendship {
+  id          String           @id @default(cuid())
+  requesterId String
+  requester   StudentProfile   @relation("FriendRequester", fields: [requesterId], references: [id], onDelete: Cascade)
+  receiverId  String
+  receiver    StudentProfile   @relation("FriendReceiver", fields: [receiverId], references: [id], onDelete: Cascade)
+  status      FriendshipStatus @default(PENDING)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([requesterId, receiverId])
+  @@map("friendships")
+}
+
+model Badge {
+  id          String  @id @default(cuid())
+  name        String  @unique
+  description String
+  iconUrl     String?
+  condition   Json
+
+  students StudentBadge[]
+
+  createdAt DateTime @default(now())
+
+  @@map("badges")
+}
+
+model StudentBadge {
+  id        String         @id @default(cuid())
+  studentId String
+  student   StudentProfile @relation(fields: [studentId], references: [id], onDelete: Cascade)
+  badgeId   String
+  badge     Badge          @relation(fields: [badgeId], references: [id], onDelete: Cascade)
+  earnedAt  DateTime       @default(now())
+
+  @@unique([studentId, badgeId])
+  @@map("student_badges")
+}
+
+model Notification {
+  id      String  @id @default(cuid())
+  userId  String
+  user    User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  type    String
+  message String
+  isRead  Boolean @default(false)
+
+  createdAt DateTime @default(now())
+
+  @@map("notifications")
+}
+
+model PlagiarismFlag {
+  id         String         @id @default(cuid())
+  campId     String
+  camp       Camp           @relation(fields: [campId], references: [id], onDelete: Cascade)
+  contestId  String
+  contest    PrivateContest @relation(fields: [contestId], references: [id], onDelete: Cascade)
+  studentAId String
+  studentA   StudentProfile @relation("FlagStudentA", fields: [studentAId], references: [id], onDelete: Cascade)
+  studentBId String
+  studentB   StudentProfile @relation("FlagStudentB", fields: [studentBId], references: [id], onDelete: Cascade)
+  reason     String
+  flaggedAt  DateTime       @default(now())
+  resolvedBy String?
+  resolver   User?          @relation("FlagResolver", fields: [resolvedBy], references: [id])
+  resolution String?
+
+  @@map("plagiarism_flags")
+}
+
+model RefreshToken {
+  id        String   @id @default(cuid())
+  token     String   @unique
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+
+  @@map("refresh_tokens")
+}
