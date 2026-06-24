@@ -29,7 +29,7 @@ export default function ProfilePage() {
 
   const fetchProfile = async () => {
     try {
-      const res = await api.get('/api/students/dashboard');
+      const res = await api.get('/students/dashboard');
       const profile = res.data.data.profile;
       setFormData({
         cfHandle: profile.cfHandle || '',
@@ -52,7 +52,7 @@ export default function ProfilePage() {
     e.preventDefault();
     setSaving(true);
     try {
-      await api.put('/api/students/profile', formData);
+      await api.put('/students/profile', formData);
       showSuccess('Profile updated successfully!');
     } catch (error) {
       showError('Failed to update profile');

@@ -24,7 +24,7 @@ export default function FriendsPage() {
 
   const fetchFriends = async () => {
     try {
-      const res = await api.get('/api/friends');
+      const res = await api.get('/friends');
       setFriends(res.data.data);
     } catch (error) {
       console.error('Failed to fetch friends', error);
@@ -38,7 +38,7 @@ export default function FriendsPage() {
     if (!searchQuery) return;
     try {
       // In a real app, we would search users first. Here we assume searchQuery is the exact student ID
-      await api.post('/api/friends/request', { receiverId: searchQuery });
+      await api.post('/friends/request', { receiverId: searchQuery });
       setSearchQuery('');
       alert('Friend request sent!');
     } catch (error) {
