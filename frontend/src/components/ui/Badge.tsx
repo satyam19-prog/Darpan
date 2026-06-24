@@ -10,19 +10,19 @@ interface BadgeProps {
 }
 
 const variantStyles: Record<string, string> = {
-  primary: 'bg-primary-500/15 text-primary-300 border-primary-500/20',
-  success: 'bg-green-500/15 text-green-300 border-green-500/20',
-  warning: 'bg-amber-500/15 text-amber-300 border-amber-500/20',
-  error: 'bg-red-500/15 text-red-300 border-red-500/20',
-  neutral: 'bg-slate-500/15 text-slate-300 border-slate-500/20',
+  primary: 'bg-primary-500/10 text-primary-700 dark:text-primary-300 border-primary-500/20',
+  success: 'bg-success/10 text-green-700 dark:text-green-400 border-success/20',
+  warning: 'bg-warning/10 text-amber-700 dark:text-amber-400 border-warning/20',
+  error: 'bg-error/10 text-red-700 dark:text-red-400 border-error/20',
+  neutral: 'bg-foreground/5 text-foreground/70 border-border',
 };
 
 const dotColors: Record<string, string> = {
-  primary: 'bg-primary-400',
-  success: 'bg-green-400',
-  warning: 'bg-amber-400',
-  error: 'bg-red-400',
-  neutral: 'bg-slate-400',
+  primary: 'bg-primary-500',
+  success: 'bg-success',
+  warning: 'bg-warning',
+  error: 'bg-error',
+  neutral: 'bg-foreground/50',
 };
 
 export default function Badge({

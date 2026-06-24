@@ -5,6 +5,7 @@ import React from 'react';
 interface CardProps {
   children: React.ReactNode;
   className?: string;
+  style?: React.CSSProperties;
   hover?: boolean;
   padding?: 'none' | 'sm' | 'md' | 'lg';
   gradientBorder?: boolean;
@@ -21,6 +22,7 @@ const paddingStyles: Record<string, string> = {
 export default function Card({
   children,
   className = '',
+  style,
   hover = false,
   padding = 'md',
   gradientBorder = false,
@@ -38,6 +40,7 @@ export default function Card({
         transition-all duration-300 ease-out
         ${className}
       `}
+      style={style}
     >
       {children}
     </div>
@@ -61,12 +64,12 @@ export function StatCard({ title, value, icon, trend, className = '' }: StatCard
     <Card hover className={className}>
       <div className="flex items-start justify-between">
         <div>
-          <p className="text-sm text-slate-400 font-medium">{title}</p>
-          <p className="text-2xl font-bold text-white mt-1">{value}</p>
+          <p className="text-sm text-foreground/70 font-medium">{title}</p>
+          <p className="text-2xl font-bold text-foreground mt-1">{value}</p>
           {trend && (
             <p
               className={`text-xs mt-2 font-medium ${
-                trend.isPositive ? 'text-green-400' : 'text-red-400'
+                trend.isPositive ? 'text-success' : 'text-error'
               }`}
             >
               {trend.isPositive ? '↑' : '↓'} {Math.abs(trend.value)}%

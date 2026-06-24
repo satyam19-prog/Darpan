@@ -30,10 +30,10 @@ export default function StudentDashboardPage() {
   if (loading) {
     return (
       <div className="space-y-6 animate-pulse">
-        <div className="h-32 bg-gray-200 dark:bg-gray-800 rounded-xl" />
+        <div className="h-32 bg-foreground/10 rounded-xl" />
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="h-48 bg-gray-200 dark:bg-gray-800 rounded-xl" />
-          <div className="h-48 bg-gray-200 dark:bg-gray-800 rounded-xl md:col-span-2" />
+          <div className="h-48 bg-foreground/10 rounded-xl" />
+          <div className="h-48 bg-foreground/10 rounded-xl md:col-span-2" />
         </div>
       </div>
     );
@@ -75,119 +75,119 @@ export default function StudentDashboardPage() {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         {/* Left Column: Stats & Badges */}
         <div className="space-y-8">
-          <Card className="border-t-4 border-t-primary-500 shadow-md hover:shadow-lg transition-all">
+          <Card className="border-t-4 border-t-primary-500 shadow-md hover:shadow-lg transition-all animate-slideUp" style={{ animationDelay: '100ms', animationFillMode: 'both' }}>
             <div className="mb-4 flex justify-between items-center">
-              <h3 className="text-xl font-bold text-white">Codeforces</h3>
-              {cf && <span className="text-sm font-normal text-slate-400">{cf.rank}</span>}
+              <h3 className="text-xl font-bold text-foreground">Codeforces</h3>
+              {cf && <span className="text-sm font-normal text-foreground/60">{cf.rank}</span>}
             </div>
             {cf ? (
               <div className="space-y-4">
                 <div className="flex items-baseline space-x-2">
-                  <span className="text-4xl font-extrabold text-primary-400">{cf.rating}</span>
-                  <span className="text-sm text-slate-400">current rating</span>
+                  <span className="text-4xl font-extrabold text-primary-500">{cf.rating}</span>
+                  <span className="text-sm text-foreground/60">current rating</span>
                 </div>
-                <div className="text-sm text-slate-400">
-                  Max Rating: <span className="font-semibold text-white">{cf.maxRating}</span> ({cf.maxRank})
+                <div className="text-sm text-foreground/60">
+                  Max Rating: <span className="font-semibold text-foreground">{cf.maxRating}</span> ({cf.maxRank})
                 </div>
               </div>
             ) : (
-              <p className="text-slate-400 text-sm">Not linked or no data</p>
+              <p className="text-foreground/60 text-sm">Not linked or no data</p>
             )}
           </Card>
 
-          <Card className="border-t-4 border-t-warning-500 shadow-md hover:shadow-lg transition-all">
+          <Card className="border-t-4 border-t-warning-500 shadow-md hover:shadow-lg transition-all animate-slideUp" style={{ animationDelay: '200ms', animationFillMode: 'both' }}>
             <div className="mb-4">
-              <h3 className="text-xl font-bold text-white">LeetCode</h3>
+              <h3 className="text-xl font-bold text-foreground">LeetCode</h3>
             </div>
             {lc ? (
               <div className="space-y-4">
-                <div className="flex justify-between items-center text-sm border-b border-slate-700 pb-2">
-                  <span className="text-slate-400">Solved</span>
-                  <span className="font-semibold text-white">{lc.submitStats?.acSubmissionNum[0]?.count || 0}</span>
+                <div className="flex justify-between items-center text-sm border-b border-border pb-2">
+                  <span className="text-foreground/60">Solved</span>
+                  <span className="font-semibold text-foreground">{lc.submitStats?.acSubmissionNum[0]?.count || 0}</span>
                 </div>
-                <div className="flex justify-between items-center text-sm border-b border-slate-700 pb-2">
-                  <span className="text-slate-400">Ranking</span>
-                  <span className="font-semibold text-white">{lc.profile?.ranking || '-'}</span>
+                <div className="flex justify-between items-center text-sm border-b border-border pb-2">
+                  <span className="text-foreground/60">Ranking</span>
+                  <span className="font-semibold text-foreground">{lc.profile?.ranking || '-'}</span>
                 </div>
               </div>
             ) : (
-              <p className="text-slate-400 text-sm">Not linked or no data</p>
+              <p className="text-foreground/60 text-sm">Not linked or no data</p>
             )}
           </Card>
 
-          <Card className="border-t-4 border-t-success-500 shadow-md hover:shadow-lg transition-all">
+          <Card className="border-t-4 border-t-success-500 shadow-md hover:shadow-lg transition-all animate-slideUp" style={{ animationDelay: '300ms', animationFillMode: 'both' }}>
             <div className="mb-4 flex justify-between items-center">
-              <h3 className="text-xl font-bold text-white">CodeChef</h3>
-              {cc && <span className="text-sm font-normal text-slate-400">{cc.stars}</span>}
+              <h3 className="text-xl font-bold text-foreground">CodeChef</h3>
+              {cc && <span className="text-sm font-normal text-foreground/60">{cc.stars}</span>}
             </div>
             {cc ? (
               <div className="space-y-4">
                 <div className="flex items-baseline space-x-2">
-                  <span className="text-4xl font-extrabold text-success-400">{cc.rating}</span>
-                  <span className="text-sm text-slate-400">current rating</span>
+                  <span className="text-4xl font-extrabold text-success">{cc.rating}</span>
+                  <span className="text-sm text-foreground/60">current rating</span>
                 </div>
-                <div className="text-sm text-slate-400">
-                  Max Rating: <span className="font-semibold text-white">{cc.highestRating}</span>
+                <div className="text-sm text-foreground/60">
+                  Max Rating: <span className="font-semibold text-foreground">{cc.highestRating}</span>
                 </div>
               </div>
             ) : (
-              <p className="text-slate-400 text-sm">Not linked or no data</p>
+              <p className="text-foreground/60 text-sm">Not linked or no data</p>
             )}
           </Card>
 
-          <Card>
+          <Card className="animate-slideUp" style={{ animationDelay: '400ms', animationFillMode: 'both' }}>
             <div className="mb-4">
-              <h3 className="text-xl font-bold text-white">Badges & Achievements</h3>
+              <h3 className="text-xl font-bold text-foreground">Badges & Achievements</h3>
             </div>
             {profile.badges.length > 0 ? (
               <div className="flex flex-wrap gap-2">
                 {profile.badges.map((b: any) => (
-                  <div key={b.id} className="group relative">
+                  <div key={b.id} className="group relative hover:scale-105 transition-transform">
                     <Badge variant="success" className="cursor-default">
                       🏆 {b.badge.name}
                     </Badge>
-                    <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 hidden group-hover:block w-48 bg-slate-900 text-white text-xs p-2 rounded z-10 text-center shadow-xl border border-slate-700">
+                    <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 hidden group-hover:block w-48 bg-foreground text-background text-xs p-2 rounded z-10 text-center shadow-xl border border-border">
                       {b.badge.description}
                     </div>
                   </div>
                 ))}
               </div>
             ) : (
-              <p className="text-sm text-slate-400">No badges earned yet. Keep solving!</p>
+              <p className="text-sm text-foreground/60">No badges earned yet. Keep solving!</p>
             )}
           </Card>
         </div>
 
         {/* Right Column: Charts & Activity */}
         <div className="lg:col-span-2 space-y-8">
-          <Card className="shadow-md">
+          <Card className="shadow-md animate-slideUp" style={{ animationDelay: '200ms', animationFillMode: 'both' }}>
             <div className="mb-4">
-              <h3 className="text-xl font-bold text-white">Codeforces Rating History</h3>
+              <h3 className="text-xl font-bold text-foreground">Codeforces Rating History</h3>
             </div>
             {/* In a real scenario, we'd fetch the user.rating array here. 
                 For now, we pass empty array or mock if not fetched by controller. */}
             <RatingChart data={[]} />
-            <p className="text-xs text-center text-slate-400 mt-4">Chart data loads when historical rating is fetched.</p>
+            <p className="text-xs text-center text-foreground/60 mt-4">Chart data loads when historical rating is fetched.</p>
           </Card>
 
-          <Card className="shadow-md">
+          <Card className="shadow-md animate-slideUp" style={{ animationDelay: '300ms', animationFillMode: 'both' }}>
             <div className="mb-4">
-              <h3 className="text-xl font-bold text-white">Recent Camps</h3>
+              <h3 className="text-xl font-bold text-foreground">Recent Camps</h3>
             </div>
             {profile.enrollments.length > 0 ? (
               <div className="space-y-4">
                 {profile.enrollments.map((e: any) => (
-                  <div key={e.id} className="flex justify-between items-center p-3 rounded-lg border border-slate-700 bg-slate-800/50 hover:bg-slate-800 transition-colors">
+                  <div key={e.id} className="flex justify-between items-center p-3 rounded-lg border border-border bg-foreground/5 hover:bg-foreground/10 transition-all hover:scale-[1.01]">
                     <div>
-                      <p className="font-semibold text-white">{e.camp.name}</p>
-                      <p className="text-xs text-slate-400">Enrolled on {new Date(e.enrolledAt).toLocaleDateString()}</p>
+                      <p className="font-semibold text-foreground">{e.camp.name}</p>
+                      <p className="text-xs text-foreground/60">Enrolled on {new Date(e.enrolledAt).toLocaleDateString()}</p>
                     </div>
                     <Badge variant="primary">{e.camp.type}</Badge>
                   </div>
                 ))}
               </div>
             ) : (
-              <p className="text-slate-400 text-sm">Not enrolled in any camps.</p>
+              <p className="text-foreground/60 text-sm">Not enrolled in any camps.</p>
             )}
           </Card>
         </div>

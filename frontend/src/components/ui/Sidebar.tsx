@@ -88,7 +88,7 @@ export default function Sidebar({ role }: SidebarProps) {
         </Link>
         <button
           onClick={() => setIsCollapsed(!isCollapsed)}
-          className="hidden lg:flex p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-white/5 transition-all"
+          className="hidden lg:flex p-1.5 rounded-lg text-foreground/50 hover:text-foreground hover:bg-foreground/5 transition-all"
         >
           <ChevronLeft
             className={`w-4 h-4 transition-transform duration-300 ${
@@ -114,20 +114,20 @@ export default function Sidebar({ role }: SidebarProps) {
                 group relative
                 ${
                   active
-                    ? 'bg-primary-500/15 text-primary-300 shadow-sm'
-                    : 'text-slate-400 hover:text-white hover:bg-white/5'
+                    ? 'bg-primary-500/15 text-primary-700 dark:text-primary-300 shadow-sm'
+                    : 'text-foreground/50 hover:text-foreground hover:bg-foreground/5'
                 }
               `}
             >
               {active && (
                 <div className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-6 rounded-r-full bg-primary-500" />
               )}
-              <span className={active ? 'text-primary-400' : 'text-slate-400 group-hover:text-white'}>
+              <span className={active ? 'text-primary-500 dark:text-primary-400' : 'text-foreground/50 group-hover:text-foreground'}>
                 {item.icon}
               </span>
               {!isCollapsed && <span>{item.label}</span>}
               {item.badge && !isCollapsed && (
-                <span className="ml-auto bg-primary-500/20 text-primary-300 text-xs px-2 py-0.5 rounded-full">
+                <span className="ml-auto bg-primary-500/20 text-primary-700 dark:text-primary-300 text-xs px-2 py-0.5 rounded-full">
                   {item.badge}
                 </span>
               )}
@@ -143,7 +143,7 @@ export default function Sidebar({ role }: SidebarProps) {
           <NotificationDropdown />
         </div>
 
-        <div className="border-t border-slate-700/50 pt-3">
+        <div className="border-t border-border pt-3">
           <div className="flex items-center gap-3 px-3 py-2">
             <Avatar
               name={user?.name || 'User'}
@@ -151,17 +151,17 @@ export default function Sidebar({ role }: SidebarProps) {
             />
             {!isCollapsed && (
               <div className="flex-1 min-w-0">
-                <p className="text-sm font-medium text-white truncate">
+                <p className="text-sm font-medium text-foreground truncate">
                   {user?.name || 'User'}
                 </p>
-                <p className="text-xs text-slate-500 truncate">
+                <p className="text-xs text-foreground/60 truncate">
                   {user?.email || ''}
                 </p>
               </div>
             )}
             <button
               onClick={logout}
-              className="p-1.5 rounded-lg text-slate-400 hover:text-red-400 hover:bg-red-500/10 transition-all"
+              className="p-1.5 rounded-lg text-foreground/50 hover:text-error hover:bg-error/10 transition-all"
               title="Logout"
             >
               <LogOut className="w-4 h-4" />
@@ -177,7 +177,7 @@ export default function Sidebar({ role }: SidebarProps) {
       {/* Mobile Toggle Button */}
       <button
         onClick={() => setIsOpen(true)}
-        className="lg:hidden fixed top-4 left-4 z-50 p-2.5 rounded-xl glass text-slate-300 hover:text-white transition-colors"
+        className="lg:hidden fixed top-4 left-4 z-50 p-2.5 rounded-xl glass text-foreground/80 hover:text-foreground transition-colors"
       >
         <Menu className="w-5 h-5" />
       </button>
@@ -194,14 +194,14 @@ export default function Sidebar({ role }: SidebarProps) {
       <aside
         className={`
           lg:hidden fixed top-0 left-0 z-50 h-full w-72
-          glass border-r border-slate-700/50
+          glass border-r border-border
           transform transition-transform duration-300 ease-out
           ${isOpen ? 'translate-x-0' : '-translate-x-full'}
         `}
       >
         <button
           onClick={() => setIsOpen(false)}
-          className="absolute top-4 right-4 p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-white/5 transition-all"
+          className="absolute top-4 right-4 p-1.5 rounded-lg text-foreground/50 hover:text-foreground hover:bg-foreground/5 transition-all"
         >
           <X className="w-5 h-5" />
         </button>
@@ -212,7 +212,7 @@ export default function Sidebar({ role }: SidebarProps) {
       <aside
         className={`
           hidden lg:block fixed top-0 left-0 h-full z-30
-          glass border-r border-slate-700/50
+          glass border-r border-border
           transition-all duration-300 ease-out
           ${isCollapsed ? 'w-20' : 'w-64'}
         `}
