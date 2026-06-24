@@ -29,7 +29,7 @@ export default function HeatmapChart() {
       case 2: return 'bg-green-700/60 dark:bg-green-700';
       case 3: return 'bg-green-500/80 dark:bg-green-500';
       case 4: return 'bg-green-400 dark:bg-green-400';
-      default: return 'bg-slate-100 dark:bg-slate-50 dark:bg-slate-800'; // 0 intensity
+      default: return 'bg-slate-100 dark:bg-slate-800'; // 0 intensity
     }
   };
 

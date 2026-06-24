@@ -72,7 +72,7 @@ export default function NotificationDropdown() {
     <div className="relative" ref={dropdownRef}>
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="relative p-2 rounded-xl text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:text-white hover:bg-white/5 transition-all"
+        className="relative p-2 rounded-xl text-slate-400 hover:text-white hover:bg-white/5 transition-all"
         title="Notifications"
       >
         <Bell className="w-5 h-5" />
@@ -82,9 +82,9 @@ export default function NotificationDropdown() {
       </button>
 
       {isOpen && (
-        <div className="absolute bottom-full mb-2 left-0 w-80 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700/50 rounded-xl shadow-2xl z-50 overflow-hidden flex flex-col max-h-96">
-          <div className="px-4 py-3 border-b border-slate-800 flex justify-between items-center bg-white dark:bg-slate-900/50">
-            <h3 className="font-semibold text-slate-900 dark:text-white">Notifications</h3>
+        <div className="absolute bottom-full mb-2 left-0 w-80 bg-slate-900 border border-slate-700/50 rounded-xl shadow-2xl z-50 overflow-hidden flex flex-col max-h-96">
+          <div className="px-4 py-3 border-b border-slate-800 flex justify-between items-center bg-slate-900/50">
+            <h3 className="font-semibold text-white">Notifications</h3>
             {unreadCount > 0 && (
               <button
                 onClick={markAllAsRead}
@@ -98,7 +98,7 @@ export default function NotificationDropdown() {
           <div className="overflow-y-auto flex-1 p-2 space-y-1">
             {notifications.length > 0 ? (
               notifications.map((n) => (
-                <div key={n.id} className="p-3 bg-slate-50 dark:bg-slate-800/50 hover:bg-slate-50 dark:bg-slate-800 rounded-lg group transition-colors">
+                <div key={n.id} className="p-3 bg-slate-800/50 hover:bg-slate-800 rounded-lg group transition-colors">
                   <p className="text-sm text-slate-200">{n.message}</p>
                   <div className="flex justify-between items-center mt-2">
                     <span className="text-xs text-slate-500">
@@ -106,7 +106,7 @@ export default function NotificationDropdown() {
                     </span>
                     <button
                       onClick={() => markAsRead(n.id)}
-                      className="text-slate-500 dark:text-slate-400 opacity-0 group-hover:opacity-100 hover:text-primary-400 transition-all p-1"
+                      className="text-slate-400 opacity-0 group-hover:opacity-100 hover:text-primary-400 transition-all p-1"
                       title="Mark as read"
                     >
                       <Check className="w-4 h-4" />

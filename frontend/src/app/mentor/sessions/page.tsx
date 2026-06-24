@@ -83,15 +83,15 @@ export default function MentorSessionsPage() {
     <div className="space-y-6 max-w-6xl mx-auto">
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <div>
-          <h1 className="text-3xl font-bold text-slate-900 dark:text-white flex items-center gap-2">
+          <h1 className="text-3xl font-bold text-white flex items-center gap-2">
             <Calendar className="w-8 h-8 text-primary-500" />
             Offline Sessions
           </h1>
-          <p className="text-slate-500 dark:text-slate-400 mt-1">Schedule sessions and track attendance</p>
+          <p className="text-slate-400 mt-1">Schedule sessions and track attendance</p>
         </div>
         <button
           onClick={() => setShowForm(!showForm)}
-          className="px-4 py-2 bg-primary-600 hover:bg-primary-500 text-slate-900 dark:text-white font-medium rounded-xl flex items-center gap-2 transition-colors"
+          className="px-4 py-2 bg-primary-600 hover:bg-primary-500 text-white font-medium rounded-xl flex items-center gap-2 transition-colors"
         >
           {showForm ? <X className="w-4 h-4" /> : <Plus className="w-4 h-4" />}
           {showForm ? 'Cancel' : 'New Session'}
@@ -99,43 +99,43 @@ export default function MentorSessionsPage() {
       </div>
 
       {showForm && (
-        <div className="glass p-6 rounded-2xl border border-slate-200 dark:border-slate-700/50 animate-in fade-in slide-in-from-top-4">
-          <h2 className="text-xl font-semibold text-slate-900 dark:text-white mb-4">Schedule New Session</h2>
+        <div className="glass p-6 rounded-2xl border border-slate-700/50 animate-in fade-in slide-in-from-top-4">
+          <h2 className="text-xl font-semibold text-white mb-4">Schedule New Session</h2>
           <form onSubmit={handleCreateSession} className="flex flex-col md:flex-row gap-4 items-end">
             <div className="flex-1 space-y-1 w-full">
-              <label className="text-sm text-slate-500 dark:text-slate-400">Title / Topic</label>
+              <label className="text-sm text-slate-400">Title / Topic</label>
               <input
                 type="text"
                 required
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
-                className="w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl px-4 py-2.5 text-slate-900 dark:text-white focus:outline-none focus:border-primary-500"
+                className="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-2.5 text-white focus:outline-none focus:border-primary-500"
                 placeholder="e.g., Dynamic Programming Intro"
               />
             </div>
             <div className="w-full md:w-48 space-y-1">
-              <label className="text-sm text-slate-500 dark:text-slate-400">Date & Time</label>
+              <label className="text-sm text-slate-400">Date & Time</label>
               <input
                 type="datetime-local"
                 required
                 value={date}
                 onChange={(e) => setDate(e.target.value)}
-                className="w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl px-4 py-2.5 text-slate-900 dark:text-white focus:outline-none focus:border-primary-500"
+                className="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-2.5 text-white focus:outline-none focus:border-primary-500"
               />
             </div>
             <div className="w-full md:w-32 space-y-1">
-              <label className="text-sm text-slate-500 dark:text-slate-400">Duration (mins)</label>
+              <label className="text-sm text-slate-400">Duration (mins)</label>
               <input
                 type="number"
                 required
                 value={duration}
                 onChange={(e) => setDuration(e.target.value)}
-                className="w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl px-4 py-2.5 text-slate-900 dark:text-white focus:outline-none focus:border-primary-500"
+                className="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-2.5 text-white focus:outline-none focus:border-primary-500"
               />
             </div>
             <button
               type="submit"
-              className="w-full md:w-auto px-6 py-2.5 bg-primary-600 hover:bg-primary-500 text-slate-900 dark:text-white font-medium rounded-xl transition-colors"
+              className="w-full md:w-auto px-6 py-2.5 bg-primary-600 hover:bg-primary-500 text-white font-medium rounded-xl transition-colors"
             >
               Schedule
             </button>
@@ -145,26 +145,26 @@ export default function MentorSessionsPage() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {loading ? (
-          <div className="col-span-full p-8 text-center text-slate-500 dark:text-slate-400">Loading sessions...</div>
+          <div className="col-span-full p-8 text-center text-slate-400">Loading sessions...</div>
         ) : sessions.length === 0 ? (
           <div className="col-span-full p-12 glass rounded-2xl flex flex-col items-center text-center">
-            <div className="w-16 h-16 rounded-full bg-slate-50 dark:bg-slate-800 flex items-center justify-center mb-4">
+            <div className="w-16 h-16 rounded-full bg-slate-800 flex items-center justify-center mb-4">
               <Calendar className="w-8 h-8 text-slate-500" />
             </div>
-            <h3 className="text-xl font-semibold text-slate-900 dark:text-white mb-2">No Sessions Yet</h3>
-            <p className="text-slate-500 dark:text-slate-400">Click "New Session" to schedule your first offline meeting.</p>
+            <h3 className="text-xl font-semibold text-white mb-2">No Sessions Yet</h3>
+            <p className="text-slate-400">Click "New Session" to schedule your first offline meeting.</p>
           </div>
         ) : (
           sessions.map((session) => (
-            <div key={session.id} className="glass p-6 rounded-2xl border border-slate-200 dark:border-slate-700/50 hover:border-slate-600 transition-colors flex flex-col">
-              <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-1 line-clamp-1">{session.title}</h3>
+            <div key={session.id} className="glass p-6 rounded-2xl border border-slate-700/50 hover:border-slate-600 transition-colors flex flex-col">
+              <h3 className="text-xl font-bold text-white mb-1 line-clamp-1">{session.title}</h3>
               <div className="flex items-center gap-2 text-sm text-primary-400 mb-4">
                 <Calendar className="w-4 h-4" />
                 {new Date(session.date).toLocaleString()} ({session.durationMinutes}m)
               </div>
               
-              <div className="mt-auto pt-4 border-t border-slate-200 dark:border-slate-700/50 flex items-center justify-between">
-                <div className="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-300">
+              <div className="mt-auto pt-4 border-t border-slate-700/50 flex items-center justify-between">
+                <div className="flex items-center gap-2 text-sm text-slate-300">
                   <Users className="w-4 h-4" />
                   {session.attendances?.length || 0} Attended
                 </div>

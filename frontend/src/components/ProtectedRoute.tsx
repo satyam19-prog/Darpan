@@ -42,12 +42,12 @@ export default function ProtectedRoute({
 
   if (!isHydrated || !isAuthorized) {
     return (
-      <div className="min-h-screen bg-slate-50 dark:bg-surface flex items-center justify-center">
+      <div className="min-h-screen bg-surface flex items-center justify-center">
         <div className="flex flex-col items-center gap-4">
           <div className="relative">
             <div className="w-12 h-12 rounded-full border-2 border-primary-500/20 border-t-primary-500 animate-spin" />
           </div>
-          <p className="text-sm text-slate-500 dark:text-slate-400 animate-pulse">Loading...</p>
+          <p className="text-sm text-slate-400 animate-pulse">Loading...</p>
         </div>
       </div>
     );

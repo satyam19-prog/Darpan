@@ -14,7 +14,7 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-white dark:bg-black text-black dark:text-slate-900 dark:text-white flex flex-col items-center transition-colors duration-300">
+    <div className="min-h-screen bg-white dark:bg-black text-black dark:text-white flex flex-col items-center transition-colors duration-300">
       {/* Navbar */}
       <nav className="w-full max-w-7xl px-8 py-6 flex items-center justify-between">
         <div className="flex items-center gap-2">
@@ -24,7 +24,7 @@ export default function Home() {
           {mounted && (
             <button
               onClick={toggleTheme}
-              className="text-gray-500 hover:text-black dark:text-gray-400 dark:hover:text-slate-900 dark:text-white transition-colors"
+              className="text-gray-500 hover:text-black dark:text-gray-400 dark:hover:text-white transition-colors"
               aria-label="Toggle Dark Mode"
             >
               {theme === 'dark' ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
@@ -33,7 +33,7 @@ export default function Home() {
           <Link href="/login" className="text-sm font-medium hover:underline underline-offset-4">
             Log in
           </Link>
-          <Link href="/register" className="text-sm font-medium px-5 py-2.5 bg-black text-slate-900 dark:text-white dark:bg-white dark:text-black rounded-lg transition-transform hover:scale-105">
+          <Link href="/register" className="text-sm font-medium px-5 py-2.5 bg-black text-white dark:bg-white dark:text-black rounded-lg transition-transform hover:scale-105">
             Sign up
           </Link>
         </div>
@@ -51,7 +51,7 @@ export default function Home() {
         </p>
         
         <div className="flex items-center gap-4">
-          <Link href="/register" className="px-8 py-4 bg-black text-slate-900 dark:text-white dark:bg-white dark:text-black text-lg font-medium rounded-xl flex items-center gap-2 transition-transform hover:-translate-y-1">
+          <Link href="/register" className="px-8 py-4 bg-black text-white dark:bg-white dark:text-black text-lg font-medium rounded-xl flex items-center gap-2 transition-transform hover:-translate-y-1">
             Get Started <ArrowRight className="w-5 h-5" />
           </Link>
         </div>

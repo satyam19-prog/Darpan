@@ -62,7 +62,7 @@ export default function ProfilePage() {
   };
 
   if (loading) {
-    return <div className="text-slate-500 dark:text-slate-400">Loading profile...</div>;
+    return <div className="text-slate-400">Loading profile...</div>;
   }
 
   return (

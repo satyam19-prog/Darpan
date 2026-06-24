@@ -54,8 +54,8 @@ function ResetPasswordForm() {
   if (!token) {
     return (
       <div className="text-center">
-        <h3 className="text-lg font-medium text-slate-900 dark:text-white mb-2">Invalid Link</h3>
-        <p className="text-slate-500 dark:text-slate-400 text-sm mb-6">
+        <h3 className="text-lg font-medium text-white mb-2">Invalid Link</h3>
+        <p className="text-slate-400 text-sm mb-6">
           This password reset link is invalid or has expired.
         </p>
         <Link href="/forgot-password">
@@ -77,7 +77,7 @@ function ResetPasswordForm() {
           required
           className="pl-10"
         />
-        <Lock className="absolute left-3 top-[34px] w-5 h-5 text-slate-500 dark:text-slate-400" />
+        <Lock className="absolute left-3 top-[34px] w-5 h-5 text-slate-400" />
       </div>
 
       <div className="relative">
@@ -90,7 +90,7 @@ function ResetPasswordForm() {
           required
           className="pl-10"
         />
-        <Key className="absolute left-3 top-[34px] w-5 h-5 text-slate-500 dark:text-slate-400" />
+        <Key className="absolute left-3 top-[34px] w-5 h-5 text-slate-400" />
       </div>
 
       <Button type="submit" className="w-full mt-6" isLoading={isLoading}>
@@ -103,16 +103,16 @@ function ResetPasswordForm() {
 export default function ResetPasswordPage() {
   return (
     <Card className="p-8">
-      <h2 className="text-2xl font-semibold mb-2 text-center text-slate-900 dark:text-white">Create New Password</h2>
-      <p className="text-slate-500 dark:text-slate-400 text-center mb-6 text-sm">
+      <h2 className="text-2xl font-semibold mb-2 text-center text-white">Create New Password</h2>
+      <p className="text-slate-400 text-center mb-6 text-sm">
         Enter your new password below.
       </p>
       
-      <Suspense fallback={<div className="text-center text-slate-500 dark:text-slate-400">Loading...</div>}>
+      <Suspense fallback={<div className="text-center text-slate-400">Loading...</div>}>
         <ResetPasswordForm />
       </Suspense>
 
-      <p className="mt-6 text-center text-sm text-slate-500 dark:text-slate-400">
+      <p className="mt-6 text-center text-sm text-slate-400">
         <Link href="/login" className="text-primary-400 hover:text-primary-300 font-medium transition-colors">
           Back to Login
         </Link>

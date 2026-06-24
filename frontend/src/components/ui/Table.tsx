@@ -35,11 +35,11 @@ export default function Table<T>({
         <div className="overflow-x-auto">
           <table className="w-full">
             <thead>
-              <tr className="border-b border-slate-200 dark:border-slate-700/50">
+              <tr className="border-b border-slate-700/50">
                 {columns.map((col) => (
                   <th
                     key={col.key}
-                    className="px-6 py-4 text-left text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider"
+                    className="px-6 py-4 text-left text-xs font-semibold text-slate-400 uppercase tracking-wider"
                   >
                     {col.header}
                   </th>
@@ -67,7 +67,7 @@ export default function Table<T>({
     return (
       <div className="glass rounded-2xl p-12 text-center">
         <div className="text-4xl mb-3">📭</div>
-        <p className="text-slate-500 dark:text-slate-400 text-sm">{emptyMessage}</p>
+        <p className="text-slate-400 text-sm">{emptyMessage}</p>
       </div>
     );
   }
@@ -77,11 +77,11 @@ export default function Table<T>({
       <div className="overflow-x-auto">
         <table className="w-full">
           <thead>
-            <tr className="border-b border-slate-200 dark:border-slate-700/50">
+            <tr className="border-b border-slate-700/50">
               {columns.map((col) => (
                 <th
                   key={col.key}
-                  className={`px-6 py-4 text-left text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider ${col.className || ''}`}
+                  className={`px-6 py-4 text-left text-xs font-semibold text-slate-400 uppercase tracking-wider ${col.className || ''}`}
                 >
                   {col.header}
                 </th>
@@ -103,7 +103,7 @@ export default function Table<T>({
                 {columns.map((col) => (
                   <td
                     key={col.key}
-                    className={`px-6 py-4 text-sm text-slate-600 dark:text-slate-300 ${col.className || ''}`}
+                    className={`px-6 py-4 text-sm text-slate-300 ${col.className || ''}`}
                   >
                     {col.render
                       ? col.render(item, idx)

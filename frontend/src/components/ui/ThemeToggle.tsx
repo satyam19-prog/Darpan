@@ -12,9 +12,9 @@ export default function ThemeToggle() {
       onClick={toggleTheme}
       className="
         relative p-2.5 rounded-xl
-        bg-white dark:bg-surface-light/50 hover:bg-white dark:bg-surface-lighter/50
-        border border-slate-200 dark:border-slate-700/50
-        text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:text-white
+        bg-surface-light/50 hover:bg-surface-lighter/50
+        border border-slate-700/50
+        text-slate-400 hover:text-white
         transition-all duration-300 ease-out
         hover:shadow-glow
         group

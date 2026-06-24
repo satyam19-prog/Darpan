@@ -29,12 +29,12 @@ export default function UpsolvingPage() {
   return (
     <div className="space-y-6">
       <div className="flex justify-between items-center">
-        <h1 className="text-3xl font-bold text-gray-900 dark:text-slate-900 dark:text-white">Upsolving Tracker</h1>
+        <h1 className="text-3xl font-bold text-gray-900 dark:text-white">Upsolving Tracker</h1>
         <Badge variant="warning" className="px-3 py-1 text-sm">
           Strict Mode: Active
         </Badge>
       </div>
-      <p className="text-slate-500 dark:text-slate-400">Track your performance in past contests and manage pending upsolve tasks to stay in camps.</p>
+      <p className="text-slate-400">Track your performance in past contests and manage pending upsolve tasks to stay in camps.</p>
 
       {loading ? (
         <Card className="h-64 animate-pulse bg-gray-200 dark:bg-gray-800">
@@ -54,19 +54,19 @@ export default function UpsolvingPage() {
                 <div className="text-sm">
                   <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-2">
                     <div>
-                      <p className="text-slate-500 dark:text-slate-400 text-xs uppercase font-semibold">Rank</p>
-                      <p className="font-medium text-slate-900 dark:text-white">{a.rank || '-'}</p>
+                      <p className="text-slate-400 text-xs uppercase font-semibold">Rank</p>
+                      <p className="font-medium text-white">{a.rank || '-'}</p>
                     </div>
                     <div>
-                      <p className="text-slate-500 dark:text-slate-400 text-xs uppercase font-semibold">Solved</p>
-                      <p className="font-medium text-slate-900 dark:text-white">{a.solvedCount}</p>
+                      <p className="text-slate-400 text-xs uppercase font-semibold">Solved</p>
+                      <p className="font-medium text-white">{a.solvedCount}</p>
                     </div>
                     <div>
-                      <p className="text-slate-500 dark:text-slate-400 text-xs uppercase font-semibold">Platform</p>
-                      <p className="font-medium text-slate-900 dark:text-white">{a.contest.platform}</p>
+                      <p className="text-slate-400 text-xs uppercase font-semibold">Platform</p>
+                      <p className="font-medium text-white">{a.contest.platform}</p>
                     </div>
                     <div>
-                      <p className="text-slate-500 dark:text-slate-400 text-xs uppercase font-semibold">Deadline</p>
+                      <p className="text-slate-400 text-xs uppercase font-semibold">Deadline</p>
                       <p className="font-medium text-red-400">{a.upsolveDeadline ? new Date(a.upsolveDeadline).toLocaleDateString() : 'N/A'}</p>
                     </div>
                   </div>
@@ -74,8 +74,8 @@ export default function UpsolvingPage() {
               </Card>
             ))
           ) : (
-            <div className="text-center py-12 bg-white dark:bg-surface-light/30 rounded-xl border border-dashed border-slate-200 dark:border-slate-700">
-              <p className="text-slate-500 dark:text-slate-400">No contest attendances found. Your future contests will appear here.</p>
+            <div className="text-center py-12 bg-surface-light/30 rounded-xl border border-dashed border-slate-700">
+              <p className="text-slate-400">No contest attendances found. Your future contests will appear here.</p>
             </div>
           )}
         </div>

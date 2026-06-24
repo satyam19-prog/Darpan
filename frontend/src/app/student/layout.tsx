@@ -10,7 +10,7 @@ export default function StudentLayout({
 }) {
   return (
     <ProtectedRoute requiredRole="STUDENT">
-      <div className="flex h-screen bg-slate-50 dark:bg-surface overflow-hidden">
+      <div className="flex h-screen bg-surface overflow-hidden">
         <Sidebar role="STUDENT" />
         <main className="flex-1 overflow-y-auto p-4 md:p-8">
           {children}

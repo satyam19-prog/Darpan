@@ -61,8 +61,8 @@ export function StatCard({ title, value, icon, trend, className = '' }: StatCard
     <Card hover className={className}>
       <div className="flex items-start justify-between">
         <div>
-          <p className="text-sm text-slate-500 dark:text-slate-400 font-medium">{title}</p>
-          <p className="text-2xl font-bold text-slate-900 dark:text-white mt-1">{value}</p>
+          <p className="text-sm text-slate-400 font-medium">{title}</p>
+          <p className="text-2xl font-bold text-white mt-1">{value}</p>
           {trend && (
             <p
               className={`text-xs mt-2 font-medium ${
