@@ -1,12 +1,10 @@
 'use client';
 
 import Link from 'next/link';
-import { ArrowRight, Moon, Sun } from 'lucide-react';
-import { useThemeStore } from '@/store/themeStore';
+import { ArrowRight } from 'lucide-react';
 import { useEffect, useState } from 'react';
 
 export default function Home() {
-  const { theme, toggleTheme } = useThemeStore();
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -21,15 +19,6 @@ export default function Home() {
           <span className="text-xl font-bold tracking-tight">Darpan</span>
         </div>
         <div className="flex items-center gap-6">
-          {mounted && (
-            <button
-              onClick={toggleTheme}
-              className="text-foreground/50 hover:text-foreground transition-colors"
-              aria-label="Toggle Dark Mode"
-            >
-              {theme === 'dark' ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
-            </button>
-          )}
           <Link href="/login" className="text-sm font-medium hover:text-primary-500 transition-colors">
             Log in
           </Link>

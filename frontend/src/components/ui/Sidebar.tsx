@@ -20,7 +20,6 @@ import {
   ChevronLeft,
 } from 'lucide-react';
 import Avatar from '@/components/ui/Avatar';
-import ThemeToggle from '@/components/ui/ThemeToggle';
 import NotificationDropdown from '@/components/ui/NotificationDropdown';
 import { useAuthStore } from '@/store/authStore';
 import type { Role } from '@/types';
@@ -138,8 +137,7 @@ export default function Sidebar({ role }: SidebarProps) {
 
       {/* Bottom Section */}
       <div className="px-3 pb-4 space-y-2">
-        <div className="px-3 py-2 flex items-center justify-between">
-          <ThemeToggle />
+        <div className="px-3 py-2 flex items-center justify-end">
           <NotificationDropdown />
         </div>
 

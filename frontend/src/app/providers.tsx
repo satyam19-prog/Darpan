@@ -2,7 +2,6 @@
 
 import React from 'react';
 import { Toaster } from 'react-hot-toast';
-import ThemeProvider from '@/components/ThemeProvider';
 
 export default function ClientProviders({
   children,
@@ -10,7 +9,7 @@ export default function ClientProviders({
   children: React.ReactNode;
 }) {
   return (
-    <ThemeProvider>
+    <>
       {children}
       <Toaster
         position="top-right"
@@ -26,6 +25,6 @@ export default function ClientProviders({
           },
         }}
       />
-    </ThemeProvider>
+    </>
   );
 }
