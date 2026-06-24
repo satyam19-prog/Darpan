@@ -68,11 +68,11 @@ export default function Modal({
       >
         {/* Header */}
         {(title || true) && (
-          <div className="flex items-center justify-between px-6 py-4 border-b border-slate-700/50">
-            <h2 className="text-lg font-semibold text-white">{title}</h2>
+          <div className="flex items-center justify-between px-6 py-4 border-b border-slate-200 dark:border-slate-700/50">
+            <h2 className="text-lg font-semibold text-slate-900 dark:text-white">{title}</h2>
             <button
               onClick={onClose}
-              className="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-white/5 transition-all duration-200"
+              className="p-1.5 rounded-lg text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:text-white hover:bg-white/5 transition-all duration-200"
             >
               <X className="w-5 h-5" />
             </button>
@@ -84,7 +84,7 @@ export default function Modal({
 
         {/* Footer */}
         {footer && (
-          <div className="px-6 py-4 border-t border-slate-700/50 flex items-center justify-end gap-3">
+          <div className="px-6 py-4 border-t border-slate-200 dark:border-slate-700/50 flex items-center justify-end gap-3">
             {footer}
           </div>
         )}

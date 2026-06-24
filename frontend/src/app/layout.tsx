@@ -33,7 +33,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${inter.variable} font-sans antialiased bg-white dark:bg-black text-black dark:text-white min-h-screen transition-colors duration-300`}
+        className={`${inter.variable} font-sans antialiased bg-white dark:bg-black text-black dark:text-slate-900 dark:text-white min-h-screen transition-colors duration-300`}
       >
         <ClientProviders>{children}</ClientProviders>
       </body>

@@ -49,7 +49,7 @@ export default function StudentDashboardPage() {
   return (
     <div className="space-y-8">
       {/* Header Profile Card */}
-      <div className="bg-gradient-to-r from-primary-600 to-indigo-600 rounded-2xl p-8 text-white shadow-xl relative overflow-hidden">
+      <div className="bg-gradient-to-r from-primary-600 to-indigo-600 rounded-2xl p-8 text-slate-900 dark:text-white shadow-xl relative overflow-hidden">
         <div className="absolute top-0 right-0 opacity-10 pointer-events-none transform translate-x-1/4 -translate-y-1/4">
           <svg width="400" height="400" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
             <path fill="#FFFFFF" d="M45.7,-76.3C58.9,-69.3,69.1,-55.3,77.7,-40.8C86.3,-26.3,93.2,-11.3,91.8,3.1C90.3,17.5,80.4,31.2,70.1,43.3C59.7,55.5,48.9,66.1,35.5,73.5C22.1,80.9,6.1,85.1,-9.1,83.9C-24.3,82.7,-38.6,76.1,-50.7,66.6C-62.8,57.1,-72.6,44.7,-79.8,30.3C-87,15.9,-91.6,-0.5,-88.7,-15.8C-85.8,-31.1,-75.4,-45.3,-62.7,-53.4C-50,-61.5,-34.9,-63.5,-20.9,-68.8C-6.9,-74.1,6,-82.7,21.1,-83.4C36.2,-84.1,45.7,-76.3,45.7,-76.3Z" transform="translate(100 100)" />
@@ -64,9 +64,9 @@ export default function StudentDashboardPage() {
             <h1 className="text-3xl font-bold">{profile.user.name}</h1>
             <p className="text-primary-100 mt-1">{profile.user.email}</p>
             <div className="flex flex-wrap gap-2 mt-4 justify-center md:justify-start">
-              {profile.cfHandle && <Badge variant="primary" className="bg-white/20 hover:bg-white/30 text-white border-none">CF: {profile.cfHandle}</Badge>}
-              {profile.lcHandle && <Badge variant="warning" className="bg-white/20 hover:bg-white/30 text-white border-none">LC: {profile.lcHandle}</Badge>}
-              {profile.ccHandle && <Badge variant="success" className="bg-white/20 hover:bg-white/30 text-white border-none">CC: {profile.ccHandle}</Badge>}
+              {profile.cfHandle && <Badge variant="primary" className="bg-white/20 hover:bg-white/30 text-slate-900 dark:text-white border-none">CF: {profile.cfHandle}</Badge>}
+              {profile.lcHandle && <Badge variant="warning" className="bg-white/20 hover:bg-white/30 text-slate-900 dark:text-white border-none">LC: {profile.lcHandle}</Badge>}
+              {profile.ccHandle && <Badge variant="success" className="bg-white/20 hover:bg-white/30 text-slate-900 dark:text-white border-none">CC: {profile.ccHandle}</Badge>}
             </div>
           </div>
         </div>
@@ -77,67 +77,67 @@ export default function StudentDashboardPage() {
         <div className="space-y-8">
           <Card className="border-t-4 border-t-primary-500 shadow-md hover:shadow-lg transition-all">
             <div className="mb-4 flex justify-between items-center">
-              <h3 className="text-xl font-bold text-white">Codeforces</h3>
-              {cf && <span className="text-sm font-normal text-slate-400">{cf.rank}</span>}
+              <h3 className="text-xl font-bold text-slate-900 dark:text-white">Codeforces</h3>
+              {cf && <span className="text-sm font-normal text-slate-500 dark:text-slate-400">{cf.rank}</span>}
             </div>
             {cf ? (
               <div className="space-y-4">
                 <div className="flex items-baseline space-x-2">
                   <span className="text-4xl font-extrabold text-primary-400">{cf.rating}</span>
-                  <span className="text-sm text-slate-400">current rating</span>
+                  <span className="text-sm text-slate-500 dark:text-slate-400">current rating</span>
                 </div>
-                <div className="text-sm text-slate-400">
-                  Max Rating: <span className="font-semibold text-white">{cf.maxRating}</span> ({cf.maxRank})
+                <div className="text-sm text-slate-500 dark:text-slate-400">
+                  Max Rating: <span className="font-semibold text-slate-900 dark:text-white">{cf.maxRating}</span> ({cf.maxRank})
                 </div>
               </div>
             ) : (
-              <p className="text-slate-400 text-sm">Not linked or no data</p>
+              <p className="text-slate-500 dark:text-slate-400 text-sm">Not linked or no data</p>
             )}
           </Card>
 
           <Card className="border-t-4 border-t-warning-500 shadow-md hover:shadow-lg transition-all">
             <div className="mb-4">
-              <h3 className="text-xl font-bold text-white">LeetCode</h3>
+              <h3 className="text-xl font-bold text-slate-900 dark:text-white">LeetCode</h3>
             </div>
             {lc ? (
               <div className="space-y-4">
-                <div className="flex justify-between items-center text-sm border-b border-slate-700 pb-2">
-                  <span className="text-slate-400">Solved</span>
-                  <span className="font-semibold text-white">{lc.submitStats?.acSubmissionNum[0]?.count || 0}</span>
+                <div className="flex justify-between items-center text-sm border-b border-slate-200 dark:border-slate-700 pb-2">
+                  <span className="text-slate-500 dark:text-slate-400">Solved</span>
+                  <span className="font-semibold text-slate-900 dark:text-white">{lc.submitStats?.acSubmissionNum[0]?.count || 0}</span>
                 </div>
-                <div className="flex justify-between items-center text-sm border-b border-slate-700 pb-2">
-                  <span className="text-slate-400">Ranking</span>
-                  <span className="font-semibold text-white">{lc.profile?.ranking || '-'}</span>
+                <div className="flex justify-between items-center text-sm border-b border-slate-200 dark:border-slate-700 pb-2">
+                  <span className="text-slate-500 dark:text-slate-400">Ranking</span>
+                  <span className="font-semibold text-slate-900 dark:text-white">{lc.profile?.ranking || '-'}</span>
                 </div>
               </div>
             ) : (
-              <p className="text-slate-400 text-sm">Not linked or no data</p>
+              <p className="text-slate-500 dark:text-slate-400 text-sm">Not linked or no data</p>
             )}
           </Card>
 
           <Card className="border-t-4 border-t-success-500 shadow-md hover:shadow-lg transition-all">
             <div className="mb-4 flex justify-between items-center">
-              <h3 className="text-xl font-bold text-white">CodeChef</h3>
-              {cc && <span className="text-sm font-normal text-slate-400">{cc.stars}</span>}
+              <h3 className="text-xl font-bold text-slate-900 dark:text-white">CodeChef</h3>
+              {cc && <span className="text-sm font-normal text-slate-500 dark:text-slate-400">{cc.stars}</span>}
             </div>
             {cc ? (
               <div className="space-y-4">
                 <div className="flex items-baseline space-x-2">
                   <span className="text-4xl font-extrabold text-success-400">{cc.rating}</span>
-                  <span className="text-sm text-slate-400">current rating</span>
+                  <span className="text-sm text-slate-500 dark:text-slate-400">current rating</span>
                 </div>
-                <div className="text-sm text-slate-400">
-                  Max Rating: <span className="font-semibold text-white">{cc.highestRating}</span>
+                <div className="text-sm text-slate-500 dark:text-slate-400">
+                  Max Rating: <span className="font-semibold text-slate-900 dark:text-white">{cc.highestRating}</span>
                 </div>
               </div>
             ) : (
-              <p className="text-slate-400 text-sm">Not linked or no data</p>
+              <p className="text-slate-500 dark:text-slate-400 text-sm">Not linked or no data</p>
             )}
           </Card>
 
           <Card>
             <div className="mb-4">
-              <h3 className="text-xl font-bold text-white">Badges & Achievements</h3>
+              <h3 className="text-xl font-bold text-slate-900 dark:text-white">Badges & Achievements</h3>
             </div>
             {profile.badges.length > 0 ? (
               <div className="flex flex-wrap gap-2">
@@ -146,14 +146,14 @@ export default function StudentDashboardPage() {
                     <Badge variant="success" className="cursor-default">
                       🏆 {b.badge.name}
                     </Badge>
-                    <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 hidden group-hover:block w-48 bg-slate-900 text-white text-xs p-2 rounded z-10 text-center shadow-xl border border-slate-700">
+                    <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 hidden group-hover:block w-48 bg-white dark:bg-slate-900 text-slate-900 dark:text-white text-xs p-2 rounded z-10 text-center shadow-xl border border-slate-200 dark:border-slate-700">
                       {b.badge.description}
                     </div>
                   </div>
                 ))}
               </div>
             ) : (
-              <p className="text-sm text-slate-400">No badges earned yet. Keep solving!</p>
+              <p className="text-sm text-slate-500 dark:text-slate-400">No badges earned yet. Keep solving!</p>
             )}
           </Card>
         </div>
@@ -162,32 +162,32 @@ export default function StudentDashboardPage() {
         <div className="lg:col-span-2 space-y-8">
           <Card className="shadow-md">
             <div className="mb-4">
-              <h3 className="text-xl font-bold text-white">Codeforces Rating History</h3>
+              <h3 className="text-xl font-bold text-slate-900 dark:text-white">Codeforces Rating History</h3>
             </div>
             {/* In a real scenario, we'd fetch the user.rating array here. 
                 For now, we pass empty array or mock if not fetched by controller. */}
             <RatingChart data={[]} />
-            <p className="text-xs text-center text-slate-400 mt-4">Chart data loads when historical rating is fetched.</p>
+            <p className="text-xs text-center text-slate-500 dark:text-slate-400 mt-4">Chart data loads when historical rating is fetched.</p>
           </Card>
 
           <Card className="shadow-md">
             <div className="mb-4">
-              <h3 className="text-xl font-bold text-white">Recent Camps</h3>
+              <h3 className="text-xl font-bold text-slate-900 dark:text-white">Recent Camps</h3>
             </div>
             {profile.enrollments.length > 0 ? (
               <div className="space-y-4">
                 {profile.enrollments.map((e: any) => (
-                  <div key={e.id} className="flex justify-between items-center p-3 rounded-lg border border-slate-700 bg-slate-800/50 hover:bg-slate-800 transition-colors">
+                  <div key={e.id} className="flex justify-between items-center p-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/50 hover:bg-slate-50 dark:bg-slate-800 transition-colors">
                     <div>
-                      <p className="font-semibold text-white">{e.camp.name}</p>
-                      <p className="text-xs text-slate-400">Enrolled on {new Date(e.enrolledAt).toLocaleDateString()}</p>
+                      <p className="font-semibold text-slate-900 dark:text-white">{e.camp.name}</p>
+                      <p className="text-xs text-slate-500 dark:text-slate-400">Enrolled on {new Date(e.enrolledAt).toLocaleDateString()}</p>
                     </div>
                     <Badge variant="primary">{e.camp.type}</Badge>
                   </div>
                 ))}
               </div>
             ) : (
-              <p className="text-slate-400 text-sm">Not enrolled in any camps.</p>
+              <p className="text-slate-500 dark:text-slate-400 text-sm">Not enrolled in any camps.</p>
             )}
           </Card>
         </div>

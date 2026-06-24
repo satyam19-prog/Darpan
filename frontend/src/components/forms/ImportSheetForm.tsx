@@ -39,7 +39,7 @@ export function ImportSheetForm({ campId, onSuccess }: ImportSheetFormProps) {
   return (
     <Card gradientBorder>
       <div className="mb-4">
-        <h3 className="text-lg font-bold text-white">Import Students from Google Sheet</h3>
+        <h3 className="text-lg font-bold text-slate-900 dark:text-white">Import Students from Google Sheet</h3>
       </div>
       <form onSubmit={handleImport} className="space-y-4">
         <div>
@@ -58,7 +58,7 @@ export function ImportSheetForm({ campId, onSuccess }: ImportSheetFormProps) {
         {result && (
           <div className="text-green-400 text-sm bg-green-500/10 p-3 rounded-lg border border-green-500/20">
             <p className="font-semibold">Import Successful!</p>
-            <ul className="list-disc pl-5 mt-1 text-slate-300">
+            <ul className="list-disc pl-5 mt-1 text-slate-600 dark:text-slate-300">
               <li>New users created: {result.added}</li>
               <li>Existing users updated: {result.updated}</li>
               <li>Successfully enrolled: {result.enrolled}</li>

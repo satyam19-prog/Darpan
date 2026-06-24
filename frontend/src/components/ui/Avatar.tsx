@@ -54,7 +54,7 @@ export default function Avatar({
             className="w-full h-full object-cover"
           />
         ) : (
-          <span className={`font-semibold text-white ${text}`}>
+          <span className={`font-semibold text-slate-900 dark:text-white ${text}`}>
             {getInitials(name)}
           </span>
         )}

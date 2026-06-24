@@ -76,7 +76,7 @@ export function SkeletonTable({
   return (
     <div className={`glass rounded-2xl overflow-hidden ${className}`}>
       {/* Header */}
-      <div className="flex gap-4 px-6 py-4 border-b border-slate-700/50">
+      <div className="flex gap-4 px-6 py-4 border-b border-slate-200 dark:border-slate-700/50">
         {Array.from({ length: columns }).map((_, i) => (
           <div key={i} className="skeleton h-4 rounded-lg flex-1" />
         ))}

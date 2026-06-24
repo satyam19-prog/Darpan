@@ -38,14 +38,14 @@ export default function Input({
       {label && (
         <label
           htmlFor={inputId}
-          className="block text-sm font-medium text-slate-300 mb-1.5"
+          className="block text-sm font-medium text-slate-600 dark:text-slate-300 mb-1.5"
         >
           {label}
         </label>
       )}
       <div className="relative">
         {leftIcon && (
-          <div className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">
+          <div className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-500 dark:text-slate-400">
             {leftIcon}
           </div>
         )}
@@ -54,8 +54,8 @@ export default function Input({
           type={inputType}
           className={`
             w-full rounded-xl
-            bg-surface-light/50 border border-slate-700/50
-            text-white placeholder-slate-500
+            bg-white dark:bg-surface-light/50 border border-slate-200 dark:border-slate-700/50
+            text-slate-900 dark:text-white placeholder-slate-500
             focus:outline-none focus:border-primary-500/50 focus:ring-2 focus:ring-primary-500/20
             transition-all duration-200
             ${leftIcon ? 'pl-10' : 'pl-4'}
@@ -70,7 +70,7 @@ export default function Input({
           <button
             type="button"
             onClick={() => setShowPassword(!showPassword)}
-            className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-300 transition-colors"
+            className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-500 dark:text-slate-400 hover:text-slate-600 dark:text-slate-300 transition-colors"
             tabIndex={-1}
           >
             {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}

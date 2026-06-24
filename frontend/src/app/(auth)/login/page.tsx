@@ -48,7 +48,7 @@ export default function LoginPage() {
 
   return (
     <Card className="p-8">
-      <h2 className="text-2xl font-semibold mb-6 text-center text-white">Welcome Back</h2>
+      <h2 className="text-2xl font-semibold mb-6 text-center text-slate-900 dark:text-white">Welcome Back</h2>
       
       <form onSubmit={handleLogin} className="space-y-4">
         <div className="relative">
@@ -61,7 +61,7 @@ export default function LoginPage() {
             required
             className="pl-10"
           />
-          <Mail className="absolute left-3 top-[34px] w-5 h-5 text-slate-400" />
+          <Mail className="absolute left-3 top-[34px] w-5 h-5 text-slate-500 dark:text-slate-400" />
         </div>
         
         <div className="relative">
@@ -74,10 +74,10 @@ export default function LoginPage() {
             required
             className="pl-10 pr-10"
           />
-          <Lock className="absolute left-3 top-[34px] w-5 h-5 text-slate-400" />
+          <Lock className="absolute left-3 top-[34px] w-5 h-5 text-slate-500 dark:text-slate-400" />
           <button
             type="button"
-            className="absolute right-3 top-[34px] text-slate-400 hover:text-white transition-colors"
+            className="absolute right-3 top-[34px] text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:text-white transition-colors"
             onClick={() => setShowPassword(!showPassword)}
           >
             {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
@@ -95,7 +95,7 @@ export default function LoginPage() {
         </Button>
       </form>
 
-      <p className="mt-6 text-center text-sm text-slate-400">
+      <p className="mt-6 text-center text-sm text-slate-500 dark:text-slate-400">
         Don't have an account?{' '}
         <Link href="/register" className="text-primary-400 hover:text-primary-300 font-medium transition-colors">
           Register

@@ -37,8 +37,8 @@ export default function ForgotPasswordPage() {
 
   return (
     <Card className="p-8">
-      <h2 className="text-2xl font-semibold mb-2 text-center text-white">Reset Password</h2>
-      <p className="text-slate-400 text-center mb-6 text-sm">
+      <h2 className="text-2xl font-semibold mb-2 text-center text-slate-900 dark:text-white">Reset Password</h2>
+      <p className="text-slate-500 dark:text-slate-400 text-center mb-6 text-sm">
         Enter your email to receive a password reset link.
       </p>
       
@@ -54,7 +54,7 @@ export default function ForgotPasswordPage() {
               required
               className="pl-10"
             />
-            <Mail className="absolute left-3 top-[34px] w-5 h-5 text-slate-400" />
+            <Mail className="absolute left-3 top-[34px] w-5 h-5 text-slate-500 dark:text-slate-400" />
           </div>
 
           <Button type="submit" className="w-full mt-6" isLoading={isLoading}>
@@ -66,10 +66,10 @@ export default function ForgotPasswordPage() {
           <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-success/20 text-success mb-4">
             <Mail className="w-8 h-8" />
           </div>
-          <h3 className="text-lg font-medium text-white mb-2">Check your email</h3>
-          <p className="text-slate-400 text-sm mb-6">
+          <h3 className="text-lg font-medium text-slate-900 dark:text-white mb-2">Check your email</h3>
+          <p className="text-slate-500 dark:text-slate-400 text-sm mb-6">
             We've sent a password reset link to <br/>
-            <span className="text-white">{email}</span>
+            <span className="text-slate-900 dark:text-white">{email}</span>
           </p>
           <Button variant="secondary" className="w-full" onClick={() => setIsSent(false)}>
             Try another email
@@ -77,7 +77,7 @@ export default function ForgotPasswordPage() {
         </div>
       )}
 
-      <p className="mt-6 text-center text-sm text-slate-400">
+      <p className="mt-6 text-center text-sm text-slate-500 dark:text-slate-400">
         Remember your password?{' '}
         <Link href="/login" className="text-primary-400 hover:text-primary-300 font-medium transition-colors">
           Back to Login

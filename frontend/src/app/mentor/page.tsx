@@ -29,7 +29,7 @@ export default function MentorDashboard() {
 
   return (
     <div className="space-y-6">
-      <h1 className="text-3xl font-bold text-gray-900 dark:text-white">Mentor Dashboard</h1>
+      <h1 className="text-3xl font-bold text-gray-900 dark:text-slate-900 dark:text-white">Mentor Dashboard</h1>
       
       <div>
         <h2 className="text-xl font-semibold mb-4">Your Assigned Camps</h2>
@@ -48,7 +48,7 @@ export default function MentorDashboard() {
                     <h3 className="text-xl font-bold">{camp.name}</h3>
                     <Badge variant="primary" className="mt-2">{camp.type}</Badge>
                   </div>
-                  <div className="text-sm text-slate-400">
+                  <div className="text-sm text-slate-500 dark:text-slate-400">
                     <p>{camp._count.enrollments} Students Enrolled</p>
                   </div>
                 </Card>

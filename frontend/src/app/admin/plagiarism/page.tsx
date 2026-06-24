@@ -62,51 +62,51 @@ export default function AdminPlagiarismPage() {
     <div className="space-y-6 max-w-6xl mx-auto">
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <div>
-          <h1 className="text-3xl font-bold text-white flex items-center gap-2">
+          <h1 className="text-3xl font-bold text-slate-900 dark:text-white flex items-center gap-2">
             <ShieldAlert className="w-8 h-8 text-primary-500" />
             Plagiarism Flags
           </h1>
-          <p className="text-slate-400 mt-1">Review and resolve code similarity flags</p>
+          <p className="text-slate-500 dark:text-slate-400 mt-1">Review and resolve code similarity flags</p>
         </div>
       </div>
 
-      <div className="glass rounded-2xl border border-slate-700/50 overflow-hidden">
+      <div className="glass rounded-2xl border border-slate-200 dark:border-slate-700/50 overflow-hidden">
         {loading ? (
-          <div className="p-8 text-center text-slate-400">Loading flags...</div>
+          <div className="p-8 text-center text-slate-500 dark:text-slate-400">Loading flags...</div>
         ) : flags.length === 0 ? (
           <div className="p-12 flex flex-col items-center justify-center text-center">
             <div className="w-16 h-16 rounded-full bg-primary-500/10 flex items-center justify-center mb-4">
               <Check className="w-8 h-8 text-primary-400" />
             </div>
-            <h3 className="text-xl font-semibold text-white mb-2">All Clear!</h3>
-            <p className="text-slate-400">No plagiarism flags found.</p>
+            <h3 className="text-xl font-semibold text-slate-900 dark:text-white mb-2">All Clear!</h3>
+            <p className="text-slate-500 dark:text-slate-400">No plagiarism flags found.</p>
           </div>
         ) : (
           <div className="overflow-x-auto">
             <table className="w-full text-left border-collapse">
               <thead>
-                <tr className="bg-slate-800/50 border-b border-slate-700/50">
-                  <th className="p-4 text-sm font-semibold text-slate-300">Date</th>
-                  <th className="p-4 text-sm font-semibold text-slate-300">Student A</th>
-                  <th className="p-4 text-sm font-semibold text-slate-300">Student B</th>
-                  <th className="p-4 text-sm font-semibold text-slate-300">Reason</th>
-                  <th className="p-4 text-sm font-semibold text-slate-300">Status</th>
-                  <th className="p-4 text-sm font-semibold text-slate-300">Action</th>
+                <tr className="bg-slate-50 dark:bg-slate-800/50 border-b border-slate-200 dark:border-slate-700/50">
+                  <th className="p-4 text-sm font-semibold text-slate-600 dark:text-slate-300">Date</th>
+                  <th className="p-4 text-sm font-semibold text-slate-600 dark:text-slate-300">Student A</th>
+                  <th className="p-4 text-sm font-semibold text-slate-600 dark:text-slate-300">Student B</th>
+                  <th className="p-4 text-sm font-semibold text-slate-600 dark:text-slate-300">Reason</th>
+                  <th className="p-4 text-sm font-semibold text-slate-600 dark:text-slate-300">Status</th>
+                  <th className="p-4 text-sm font-semibold text-slate-600 dark:text-slate-300">Action</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-slate-700/50">
                 {flags.map((flag) => (
                   <tr key={flag.id} className="hover:bg-white/[0.02] transition-colors">
-                    <td className="p-4 text-sm text-slate-400 whitespace-nowrap">
+                    <td className="p-4 text-sm text-slate-500 dark:text-slate-400 whitespace-nowrap">
                       {new Date(flag.flaggedAt).toLocaleDateString()}
                     </td>
-                    <td className="p-4 font-medium text-white">
+                    <td className="p-4 font-medium text-slate-900 dark:text-white">
                       {flag.studentA.user.name}
                     </td>
-                    <td className="p-4 font-medium text-white">
+                    <td className="p-4 font-medium text-slate-900 dark:text-white">
                       {flag.studentB.user.name}
                     </td>
-                    <td className="p-4 text-sm text-slate-300 max-w-xs truncate" title={flag.reason}>
+                    <td className="p-4 text-sm text-slate-600 dark:text-slate-300 max-w-xs truncate" title={flag.reason}>
                       {flag.reason}
                     </td>
                     <td className="p-4">
@@ -127,20 +127,20 @@ export default function AdminPlagiarismPage() {
                             <input
                               type="text"
                               placeholder="Resolution note..."
-                              className="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-1.5 text-sm text-white focus:outline-none focus:border-primary-500"
+                              className="w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg px-3 py-1.5 text-sm text-slate-900 dark:text-white focus:outline-none focus:border-primary-500"
                               value={resolutionNote}
                               onChange={(e) => setResolutionNote(e.target.value)}
                             />
                             <div className="flex gap-2">
                               <button
                                 onClick={() => handleResolve(flag.id)}
-                                className="px-3 py-1 bg-primary-600 hover:bg-primary-500 text-white text-xs font-medium rounded-lg transition-colors"
+                                className="px-3 py-1 bg-primary-600 hover:bg-primary-500 text-slate-900 dark:text-white text-xs font-medium rounded-lg transition-colors"
                               >
                                 Submit
                               </button>
                               <button
                                 onClick={() => { setResolvingId(null); setResolutionNote(''); }}
-                                className="px-3 py-1 bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-medium rounded-lg transition-colors"
+                                className="px-3 py-1 bg-slate-50 dark:bg-slate-800 hover:bg-slate-700 text-slate-600 dark:text-slate-300 text-xs font-medium rounded-lg transition-colors"
                               >
                                 Cancel
                               </button>

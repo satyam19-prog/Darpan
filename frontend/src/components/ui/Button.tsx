@@ -18,7 +18,7 @@ const variantStyles: Record<string, string> = {
   secondary:
     'border border-primary-500/30 bg-primary-500/10 text-primary-300 hover:bg-primary-500/20 hover:border-primary-500/50 active:scale-[0.98]',
   ghost:
-    'text-slate-300 hover:bg-white/5 hover:text-white active:scale-[0.98]',
+    'text-slate-600 dark:text-slate-300 hover:bg-white/5 hover:text-white active:scale-[0.98]',
   danger:
     'bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white shadow-lg active:scale-[0.98]',
 };

@@ -54,7 +54,7 @@ export default function FriendsPage() {
 
       <div className="grid md:grid-cols-3 gap-6">
         <div className="md:col-span-1 space-y-6">
-          <div className="p-6 rounded-xl bg-surface-light border border-slate-700/50">
+          <div className="p-6 rounded-xl bg-white dark:bg-surface-light border border-slate-200 dark:border-slate-700/50">
             <h2 className="text-lg font-semibold mb-4 flex items-center gap-2">
               <UserPlus className="w-5 h-5" /> Add Friend
             </h2>
@@ -64,7 +64,7 @@ export default function FriendsPage() {
                 placeholder="Enter Friend's Email"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="flex-1 bg-surface border border-slate-700 rounded-lg px-3 py-2 outline-none focus:border-blue-500"
+                className="flex-1 bg-slate-50 dark:bg-surface border border-slate-200 dark:border-slate-700 rounded-lg px-3 py-2 outline-none focus:border-blue-500"
               />
               <button
                 type="submit"
@@ -77,20 +77,20 @@ export default function FriendsPage() {
         </div>
 
         <div className="md:col-span-2">
-          <div className="p-6 rounded-xl bg-surface-light border border-slate-700/50 min-h-[400px]">
+          <div className="p-6 rounded-xl bg-white dark:bg-surface-light border border-slate-200 dark:border-slate-700/50 min-h-[400px]">
             <h2 className="text-lg font-semibold mb-4 flex items-center gap-2">
               <Users className="w-5 h-5" /> Your Friends
             </h2>
             
             {loading ? (
-              <div className="text-slate-400">Loading friends...</div>
+              <div className="text-slate-500 dark:text-slate-400">Loading friends...</div>
             ) : friends.length === 0 ? (
-              <div className="text-slate-400">You haven't added any friends yet. Add some to compare ratings!</div>
+              <div className="text-slate-500 dark:text-slate-400">You haven't added any friends yet. Add some to compare ratings!</div>
             ) : (
               <div className="overflow-x-auto">
                 <table className="w-full text-left">
                   <thead>
-                    <tr className="border-b border-slate-700 text-slate-400">
+                    <tr className="border-b border-slate-200 dark:border-slate-700 text-slate-500 dark:text-slate-400">
                       <th className="pb-3 font-medium">Name</th>
                       <th className="pb-3 font-medium text-blue-400">Codeforces</th>
                       <th className="pb-3 font-medium text-orange-400">LeetCode</th>
@@ -100,7 +100,7 @@ export default function FriendsPage() {
                   </thead>
                   <tbody>
                     {friends.map((friend) => (
-                      <tr key={friend.id} className="border-b border-slate-700/50 last:border-0">
+                      <tr key={friend.id} className="border-b border-slate-200 dark:border-slate-700/50 last:border-0">
                         <td className="py-4">{friend.name}</td>
                         <td className="py-4 font-semibold">{friend.codeforcesRating}</td>
                         <td className="py-4 font-semibold">{friend.leetcodeRating}</td>

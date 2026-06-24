@@ -14,7 +14,7 @@ const variantStyles: Record<string, string> = {
   success: 'bg-green-500/15 text-green-300 border-green-500/20',
   warning: 'bg-amber-500/15 text-amber-300 border-amber-500/20',
   error: 'bg-red-500/15 text-red-300 border-red-500/20',
-  neutral: 'bg-slate-500/15 text-slate-300 border-slate-500/20',
+  neutral: 'bg-slate-500/15 text-slate-600 dark:text-slate-300 border-slate-500/20',
 };
 
 const dotColors: Record<string, string> = {
