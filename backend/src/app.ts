@@ -9,6 +9,8 @@ import studentRoutes from './routes/student.routes';
 import notificationRoutes from './routes/notification.routes';
 import plagiarismRoutes from './routes/plagiarism.routes';
 import offlineSessionRoutes from './routes/offline-session.routes';
+import friendRoutes from './routes/friend.routes';
+import reportRoutes from './routes/report.routes';
 import { errorHandler } from './middleware/errorHandler.middleware';
 import { rateLimiter } from './middleware/rateLimiter.middleware';
 import { logger } from './utils/logger';
@@ -44,6 +46,8 @@ app.use('/api/students', studentRoutes);
 app.use('/api/notifications', notificationRoutes);
 app.use('/api/plagiarism', plagiarismRoutes);
 app.use('/api/offline-sessions', offlineSessionRoutes);
+app.use('/api/friends', friendRoutes);
+app.use('/api/reports', reportRoutes);
 
 // Health check
 app.get('/health', (req, res) => {

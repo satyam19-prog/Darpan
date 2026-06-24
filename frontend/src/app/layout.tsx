@@ -33,7 +33,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark" suppressHydrationWarning>
       <body
-        className={`${inter.variable} font-sans antialiased bg-surface text-white min-h-screen`}
+        className={`${inter.variable} font-sans antialiased bg-white dark:bg-black text-black dark:text-white min-h-screen transition-colors duration-300`}
       >
         <ClientProviders>{children}</ClientProviders>
       </body>
